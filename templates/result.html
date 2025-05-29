@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Kết quả nhận diện biển số{% endblock %}
+
+{% block content %}
+  <div style="max-width: 800px; margin: auto; text-align: center; padding: 40px 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+    <h2 style="color: #1565c0; margin-bottom: 20px;">🔍 Kết quả nhận diện biển số</h2>
+
+    {% if filename %}
+      <div style="color: #2e7d32; font-weight: bold; font-size: 20px; margin-bottom: 10px;">
+        ✅ Biển số: {{ plate }}
+      </div>
+
+      <div class="info">🕒 <strong>Thời gian:</strong> {{ time }}</div>
+      <div class="info">📌 <strong>Trạng thái:</strong> {{ note }}</div>
+      {% if msg %}
+        <div class="info">✔️ {{ msg }}</div>
+      {% endif %}
+      {% if duration %}
+        <div class="info">🕓 <strong>Thời gian gửi:</strong> {{ duration }}</div>
+      {% endif %}
+      {% if fee %}
+        <div class="info">💵 <strong>Phí gửi:</strong> {{ "{:,.0f}".format(fee) }} đ</div>
+      {% endif %}
+
+      <img src="{{ url_for('dashboard_image', filename=filename) }}" alt="Biển số"
+           style="width: 100%; max-width: 500px; margin-top: 20px; border-radius: 12px; border: 3px solid #f57c00;">
+
+      {% if duration and fee %}
+        <div style="margin-top: 20px;">
+          <a href="{{ url_for('generate_invoice', plate=plate) }}" target="_blank">
+            <button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+              🧾 Xuất hóa đơn PDF
+            </button>
+          </a>
+        </div>
+      {% endif %}
+
+    {% elif msg %}
+      <div style="color: #c62828; font-size: 18px; margin-bottom: 16px;">❌ {{ msg }}</div>
+    {% endif %}
+
+    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+      <a href="{{ url_for('capture_in') }}">
+        <button style="background-color: #2e7d32; color: white; padding: 10px 18px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+          📥 Quét tiếp (Cổng vào)
+        </button>
+      </a>
+      <a href="{{ url_for('capture_out') }}">
+        <button style="background-color: #c62828; color: white; padding: 10px 18px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+          📤 Quét tiếp (Cổng ra)
+        </button>
+      </a>
+      <a href="{{ url_for('dashboard') }}">
+        <button style="background-color: #1565c0; color: white; padding: 10px 18px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+          📊 Vào Dashboard
+        </button>
+      </a>
+      <a href="{{ url_for('index') }}">
+        <button style="background-color: #6d4c41; color: white; padding: 10px 18px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+          🏠 Trang chủ
+        </button>
+      </a>
+    </div>
+  </div>
+{% endblock %}

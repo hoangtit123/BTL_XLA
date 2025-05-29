@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Lịch sử ghi nhận biển số{% endblock %}
+
+{% block content %}
+  <div style="padding: 30px;">
+    <h2 style="color: #1565c0; text-align: center; margin-bottom: 20px;">📊 Lịch sử ghi nhận biển số</h2>
+
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 25px;">
+      <input id="searchInput" placeholder="🔍 Nhập biển số..." style="padding: 10px 14px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; width: 250px;">
+      <select id="filterType" style="padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="all">Tất cả</option>
+        <option value="Vào">Vào</option>
+        <option value="Ra">Ra</option>
+      </select>
+    </div>
+
+    {% if image_data %}
+    <div style="overflow-x: auto;">
+      <table id="plateTable" style="width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+        <thead>
+          <tr style="background-color: #f57c00; color: white;">
+            <th style="padding: 12px;">Ảnh</th>
+            <th style="padding: 12px;">Thời gian</th>
+            <th style="padding: 12px;">Biển số</th>
+            <th style="padding: 12px;">Trạng thái</th>
+            <th style="padding: 12px;">Tổng thời gian</th>
+            <th style="padding: 12px;">Phí</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for img, time, plate, note in image_data %}
+          <tr class="row" style="text-align: center;">
+            <td style="padding: 10px;"><img src="{{ url_for('dashboard_image', filename=img) }}" style="width: 120px; border-radius: 6px;"></td>
+            <td style="padding: 10px;">{{ time }}</td>
+            <td class="plate-cell" style="padding: 10px;">{{ plate }}</td>
+            <td class="note-cell" style="padding: 10px;">{{ note }}</td>
+
+            {% if note == "Ra" and plate in plate_history and plate_history[plate].in and plate_history[plate].out %}
+              {% set fmt = "%Y-%m-%d %H:%M:%S" %}
+              {% set in_time = plate_history[plate].in %}
+              {% set out_time = plate_history[plate].out %}
+              {% set duration = (datetime.strptime(out_time, fmt) - datetime.strptime(in_time, fmt)) %}
+              {% set duration_str = duration.__str__().split('.')[0] %}
+              {% set hours = ((duration.total_seconds() / 3600) | round(0, 'ceil')) %}
+              {% set money = hours * 5000 %}
+              <td style="padding: 10px;">{{ duration_str }}</td>
+              <td style="padding: 10px;">{{ "{:,.0f}".format(money) }} đ</td>
+            {% else %}
+              <td style="padding: 10px;" colspan="2">—</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <p style="text-align:center; color: #888;">🚫 Chưa có dữ liệu.</p>
+    {% endif %}
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const filterType = document.getElementById('filterType');
+    const rows = document.querySelectorAll('#plateTable tbody tr');
+
+    function filterTable() {
+      const query = searchInput.value.trim().toUpperCase();
+      const type = filterType.value;
+
+      rows.forEach(row => {
+        const plate = row.querySelector('.plate-cell').textContent.toUpperCase();
+        const note = row.querySelector('.note-cell').textContent;
+        const matchesPlate = plate.includes(query);
+        const matchesType = type === 'all' || note === type;
+        row.style.display = (matchesPlate && matchesType) ? '' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', filterTable);
+    filterType.addEventListener('change', filterTable);
+  </script>
+{% endblock %}

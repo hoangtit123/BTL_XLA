@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Hệ thống quản lý bãi xe Đại Nam{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f57c00;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-left img {
+      height: 55px;
+      margin-right: 15px;
+    }
+
+    .navbar-left h1 {
+      color: white;
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      padding: 8px 10px;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .toggle-btn {
+      background-color: white;
+      color: #f57c00;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 30px 40px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* 🌙 DARK MODE FULL STYLE */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .content {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode table {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode th {
+      background-color: #2a2a2a !important;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode td {
+      border-color: #444 !important;
+    }
+
+    body.dark-mode .toggle-btn {
+      background-color: #333;
+      color: #f57c00;
+    }
+
+    /* Tăng độ sáng cho phần chữ mô tả, subtitle */
+    body.dark-mode p,
+    body.dark-mode small,
+    body.dark-mode .description,
+    body.dark-mode .subtitle {
+      color: #cccccc !important;
+    }
+
+    body.dark-mode .card {
+      background-color: #1e1e1e !important;
+      color: #f5f5f5;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.05);
+    }
+  </style>
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body id="pageBody">
+  <div class="navbar">
+    <div class="navbar-left">
+      <img src="{{ url_for('static', filename='img/DAINAM_Logo.png') }}" alt="Logo Đại Nam">
+      <h1>Đại học Đại Nam – Học để thay đổi</h1>
+    </div>
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}">Trang chủ</a>
+      <a href="{{ url_for('capture_in') }}">Cổng vào</a>
+      <a href="{{ url_for('capture_out') }}">Cổng ra</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
+    </div>
+  </div>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script>
+    const body = document.getElementById('pageBody');
+    const stored = localStorage.getItem('darkMode') === 'true';
+    if (stored) body.classList.add('dark-mode');
+
+    function toggleDarkMode() {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    }
+  </script>
+</body>
+</html>

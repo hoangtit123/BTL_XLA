@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Trang chủ - Hệ thống quản lý bãi xe Đại Nam{% endblock %}
+
+{% block content %}
+  <div style="text-align: center; padding: 40px 20px;">
+    <img src="{{ url_for('static', filename='img/DAINAM_Logo.png') }}" alt="Logo Đại Nam" style="height: 120px; margin-bottom: 20px;">
+    <h2 style="font-size: 28px; color: #1565c0; margin-bottom: 10px;">
+      🎓 Hệ thống quản lý bãi xe Đại học Đại Nam
+    </h2>
+    <p style="font-size: 18px; color: #444;">
+      Chào mừng bạn đến với hệ thống ghi nhận và tra cứu thông tin xe ra vào trường.  
+      Mọi thao tác đều có thể thực hiện thông qua thanh điều hướng phía trên.
+    </p>
+
+    <div style="margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; font-size: 16px;">
+      <div style="max-width: 240px; background: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="font-size: 36px;">📥</div>
+        <h3 style="color: #f57c00;">Ghi nhận cổng vào</h3>
+        <p>Camera tự động nhận diện biển số và lưu thời gian vào hệ thống.</p>
+      </div>
+
+      <div style="max-width: 240px; background: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="font-size: 36px;">📤</div>
+        <h3 style="color: #f57c00;">Ghi nhận cổng ra</h3>
+        <p>Đối chiếu dữ liệu, xác nhận xe đã vào trước đó và ghi nhận ra.</p>
+      </div>
+
+      <div style="max-width: 240px; background: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="font-size: 36px;">📊</div>
+        <h3 style="color: #f57c00;">Dashboard trực quan</h3>
+        <p>Theo dõi lịch sử xe ra vào, lọc theo biển số, thời gian và trạng thái.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
