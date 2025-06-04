@@ -1,20 +1,15 @@
-# BTL_XLA
-Tên Project: CNXLA-15-02 Mô tả: Bài tập lớn học phần Công nghệ xử lý ảnh - Lớp CNTT 15-02  - Khoa Công nghệ thông tin - Đại học Đại Nam
-# 🚗 XỬ LÝ HÌNH ẢNH ĐỌC BIỂN SỐ XE TRONG HỆ THỐNG BÃI ĐỖ XE THÔNG MINH
-## 👨‍💻 Người thực hiện: Nguyễn Việt Hoàng 
-- MSV 1571020108
-- Lớp CNTT 15-04 Đại học Đại Nam
-- Bộ môn: Xử lý ảnh – Kỹ thuật phần mềm
-- Dự án thực hiện năm 2025
+# 🚗 Hệ thống Nhận diện Biển số Xe trong Bãi đỗ Xe Thông minh
 
-## 📝 Giới thiệu
-Đây là một hệ thống quản lý bãi đỗ xe thông minh, sử dụng **xử lý ảnh** và **nhận dạng biển số xe** để ghi nhận lượt vào – ra, tính phí và xuất hóa đơn tự động.
+## 📌 Giới thiệu
+
+Dự án này là bài tập lớn của học phần **Công nghệ Xử lý Ảnh**, với mục tiêu xây dựng một hệ thống nhận diện biển số xe tự động trong bãi đỗ xe thông minh. Hệ thống sử dụng mô hình YOLOv8 để phát hiện và nhận diện biển số xe từ camera, kết hợp với giao diện web để quản lý và hiển thị thông tin.
+
 
 Dự án áp dụng các công nghệ như:
 - Python + OpenCV
 - YOLO + OCR
 - Flask Web Interface
-- Giao tiếp phần cứng (ESP32, RFID, Servo)
+- HTML
 
 ---
 
