@@ -60,4 +60,34 @@ Người dùng chọn:
 
 <img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%201.png" alt="Giao diện trang chủ" width="400"/>
 
+### 🟢 Giao diện cổng vào
+
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%202.png" alt="Giao diện cổng vào" width="400"/>
+
+### 🔴 Giao diện cổng ra
+
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%203.jpg" alt="Giao diện cổng ra" width="400"/>
+
+### 📋 Giao diện lịch sử ra – vào
+
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%204.png" alt="Giao diện lịch sử ra - vào" width="400"/>
+
+---
+## ⚠️ Các tình huống lỗi và cách hệ thống xử lý
+### ❌ Trường hợp quét biển số **2 lần tại cổng vào**
+- Hiển thị: **"Xe đã vào bãi"**
+- Không ghi log lại → đảm bảo dữ liệu không trùng lặp.
+
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%205%20ba%CC%81o%20l%C3%B4%CC%83i.jpg" alt="Lỗi vào 2 lần" width="400"/>
+
+### ❌ Trường hợp quét ở cổng ra nhưng **chưa từng vào hoặc quét 2 lần**
+- Hiển thị: **"Xe chưa vào bãi/xe đã ghi nhận ra rồi"**
+- Không thực hiện bất kỳ thao tác ghi log hay tính tiền.
+
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%206%20ba%CC%81o%20l%C3%B4%CC%83i.jpg" alt="Lỗi ra khi chưa vào" width="400"/>
+
+
+
+
+
 
