@@ -52,9 +52,12 @@ Người dùng chọn:
 
 ---
 ## 🔄 Sơ đồ cơ chế hoạt động
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/sodocoche.jpg" alt="Sơ đồ hoạt động" width="400"/>
 
 
 
+## 🖥️ Giao diện trang chủ
 
-## 📁 Cấu trúc hệ thống (có thể cập nhật thêm)
+<img src="https://github.com/hoangtit123/BTL_XLA/blob/main/a%CC%89nh%20btl/a%CC%89nh%201.png" alt="Giao diện trang chủ" width="400"/>
+
 
