@@ -58,7 +58,7 @@ Người dùng chọn:
 ---
 ## 🔄 Sơ đồ cơ chế hoạt động
 
-<img src="images/flowchart.png" alt="Sơ đồ hoạt động" width="700"/>
+
 
 
 ## 📁 Cấu trúc hệ thống (có thể cập nhật thêm)
